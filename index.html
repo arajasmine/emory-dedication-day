@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Emory Juliete's Dedication Day</title>
+<meta name="description" content="Join us to celebrate the dedication of our daughter, Emory Juliete Solberg. August 9, 2026." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Pinyon+Script&family=Josefin+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+<style>
+  :root{
+    --blush:#fbeef0; --blush-deep:#f6e0e3; --cream:#fdf8f5;
+    --rose:#c98a8f; --rose-deep:#a86b71; --gold:#c9a86a;
+    --ink:#6d5257; --ink-soft:#8a7175; --white:#fff;
+    --green:#7ba883; --green-bg:#eef6ef; --red:#cf7f83; --red-bg:#fbeeee;
+    --shadow:0 18px 45px -22px rgba(120,80,85,.45);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Josefin Sans',sans-serif;color:var(--ink);background:var(--blush);line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  h1,h2,h3,.serif{font-family:'Cormorant Garamond',serif;font-weight:500}
+  .script{font-family:'Pinyon Script',cursive;font-weight:400}
+  .eyebrow{text-transform:uppercase;letter-spacing:.32em;font-size:.72rem;color:var(--rose-deep);font-weight:400}
+  section{padding:clamp(3.5rem,8vw,6rem) 1.5rem}
+  .wrap{max-width:720px;margin:0 auto;text-align:center}
+  .divider{display:flex;align-items:center;justify-content:center;gap:1rem;margin:1.4rem auto;color:var(--gold)}
+  .divider::before,.divider::after{content:"";height:1px;width:60px;background:linear-gradient(90deg,transparent,var(--gold))}
+  .divider::after{background:linear-gradient(90deg,var(--gold),transparent)}
+  .divider svg{width:20px;height:20px}
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity 1s ease,transform 1s ease}
+  .reveal.in{opacity:1;transform:none}
+  .section-title{font-size:clamp(2rem,6vw,2.9rem);color:var(--rose-deep)}
+  .section-sub{font-style:italic;color:var(--ink-soft);font-size:1.05rem}
+  .band-cream{background:linear-gradient(180deg,var(--blush),var(--cream))}
+  .band-white{background:var(--cream)}
+  .band-blush{background:linear-gradient(180deg,var(--cream),var(--blush-deep))}
+  .card{background:var(--white);border-radius:20px;padding:clamp(2rem,5vw,3rem);box-shadow:var(--shadow);border:1px solid #f2e4e6}
+  .btn{display:inline-block;margin-top:1.2rem;background:var(--rose);color:#fff;text-decoration:none;padding:.8rem 1.8rem;border-radius:999px;letter-spacing:.15em;text-transform:uppercase;font-size:.78rem;border:none;cursor:pointer;transition:background .3s,transform .2s;font-family:'Josefin Sans',sans-serif}
+  .btn:hover{background:var(--rose-deep);transform:translateY(-2px)}
+  .btn.outline{background:transparent;color:var(--rose-deep);border:1px solid var(--rose)}
+  .btn.outline:hover{background:var(--rose);color:#fff}
+
+  /* ===== ENVELOPE INTRO ===== */
+  #envelope{position:fixed;inset:0;z-index:100;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    background:radial-gradient(1000px 700px at 50% 30%,#fff,var(--blush-deep));transition:opacity .8s ease;cursor:pointer;padding:1.5rem}
+  #envelope.gone{opacity:0;pointer-events:none}
+  .env-eyebrow{letter-spacing:.35em;text-transform:uppercase;font-size:.72rem;color:var(--rose-deep);margin-bottom:1.6rem}
+  .env{position:relative;width:min(340px,80vw);height:min(228px,54vw);filter:drop-shadow(0 20px 30px rgba(150,100,105,.35))}
+  .env-body{position:absolute;inset:0;background:linear-gradient(160deg,#fceef0,#f3d9dd);border-radius:10px;overflow:hidden}
+  .env-body::before,.env-body::after{content:"";position:absolute;top:0;width:60%;height:100%;background:#f7e2e6}
+  .env-body::before{left:0;transform:skewX(18deg);transform-origin:top;box-shadow:2px 0 6px rgba(150,100,105,.12)}
+  .env-body::after{right:0;transform:skewX(-18deg);transform-origin:top}
+  .env-pocket{position:absolute;left:0;bottom:0;width:100%;height:62%;background:linear-gradient(160deg,#f3d9dd,#eccdd2);border-radius:0 0 10px 10px;z-index:3}
+  .env-flap{position:absolute;left:0;top:0;width:100%;height:56%;background:linear-gradient(160deg,#f7dee2,#eecdd2);
+    clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;transition:transform .8s ease;z-index:5}
+  .env.open .env-flap{transform:rotateX(180deg);z-index:1}
+  .env-seal{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);width:56px;height:56px;border-radius:50%;
+    background:radial-gradient(circle at 35% 30%,#d79aa0,#a86b71);color:#fff;display:flex;align-items:center;justify-content:center;
+    font-family:'Cormorant Garamond',serif;font-size:1.8rem;z-index:6;box-shadow:0 6px 14px rgba(150,90,95,.4);transition:opacity .4s}
+  .env.open .env-seal{opacity:0}
+  .env-card{position:absolute;left:50%;top:50%;transform:translate(-50%,-45%) scale(.9);width:78%;background:#fff;border-radius:6px;
+    padding:1.2rem;text-align:center;box-shadow:0 10px 24px rgba(150,100,105,.25);opacity:0;transition:all .7s .3s ease;z-index:4}
+  .env.open .env-card{opacity:1;transform:translate(-50%,-78%) scale(1)}
+  .env-card .script{font-size:2rem;color:var(--rose-deep);line-height:1}
+  .env-card small{letter-spacing:.2em;text-transform:uppercase;font-size:.6rem;color:var(--ink-soft)}
+  .env-hint{margin-top:2.4rem;letter-spacing:.25em;text-transform:uppercase;font-size:.72rem;color:var(--rose-deep);animation:pulse 2s infinite}
+  @keyframes pulse{0%,100%{opacity:.5}50%{opacity:1}}
+
+  /* ===== MUSIC PLAYER ===== */
+  #ytHolder{position:fixed;width:1px;height:1px;left:-9999px;top:-9999px}
+  .music-btn{position:fixed;top:1rem;right:1rem;z-index:60;background:rgba(255,255,255,.85);border:1px solid var(--blush-deep);
+    border-radius:999px;padding:.55rem 1rem;cursor:pointer;font-family:'Josefin Sans',sans-serif;font-size:.72rem;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--rose-deep);box-shadow:var(--shadow);display:flex;align-items:center;gap:.5rem}
+  .music-btn .bars{display:inline-flex;gap:2px;align-items:flex-end;height:12px}
+  .music-btn .bars i{width:2px;background:var(--rose);height:5px;border-radius:2px}
+  .music-btn.playing .bars i{animation:eq .8s infinite ease-in-out}
+  .music-btn.playing .bars i:nth-child(2){animation-delay:.2s}
+  .music-btn.playing .bars i:nth-child(3){animation-delay:.4s}
+  @keyframes eq{0%,100%{height:4px}50%{height:12px}}
+
+  /* ===== HERO ===== */
+  .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+    background:radial-gradient(1200px 600px at 50% -10%,#fff 0%,var(--blush) 55%),linear-gradient(180deg,var(--cream),var(--blush));
+    position:relative;padding:5rem 1.5rem}
+  .hero-photo{width:min(220px,54vw);aspect-ratio:1;border-radius:50%;object-fit:cover;border:5px solid #fff;box-shadow:var(--shadow);margin-bottom:1.8rem;background:linear-gradient(160deg,var(--blush-deep),var(--rose))}
+  .hero .eyebrow{margin-bottom:1rem}
+  .hero .lead{font-size:clamp(1rem,3.4vw,1.35rem);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);font-weight:400}
+  .hero .name{font-size:clamp(3.4rem,12vw,6rem);color:var(--rose-deep);line-height:1.05;margin:.4rem 0 .2rem}
+  .surname{font-size:1.3rem;letter-spacing:.3em;text-transform:uppercase;color:var(--ink-soft);font-family:'Cormorant Garamond',serif}
+  .date-badge{margin-top:2rem;display:inline-flex;align-items:center;gap:1.2rem;padding:.9rem 1.5rem;border-top:1px solid var(--gold);border-bottom:1px solid var(--gold)}
+  .date-badge .day{text-transform:uppercase;letter-spacing:.2em;font-size:.82rem}
+  .date-badge .num{font-family:'Cormorant Garamond',serif;font-size:3rem;line-height:1;color:var(--rose-deep)}
+  .date-badge .mo{text-transform:uppercase;letter-spacing:.2em;font-size:.82rem}
+  .date-badge .sep{width:1px;height:44px;background:var(--gold);opacity:.6}
+  .hero .time{margin-top:1rem;letter-spacing:.22em;text-transform:uppercase;font-size:.82rem;color:var(--ink-soft)}
+  .plan-note{margin-top:.6rem;font-size:.8rem;font-style:italic;color:var(--ink-soft);opacity:.85;max-width:26rem}
+  .scroll-cue{position:absolute;bottom:1.6rem;left:50%;transform:translateX(-50%);color:var(--rose);font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;opacity:.7}
+  .scroll-cue span{display:block;font-size:1.2rem;animation:bob 2s ease-in-out infinite}
+  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+
+  /* ===== COUNTDOWN ===== */
+  .count-grid{display:flex;gap:.7rem;justify-content:center;margin-top:2rem;flex-wrap:wrap}
+  .count-box{background:var(--white);border-radius:16px;box-shadow:var(--shadow);border:1px solid #f2e4e6;padding:1.1rem .6rem;min-width:76px}
+  .count-box .n{font-family:'Cormorant Garamond',serif;font-size:2.6rem;line-height:1;color:var(--rose-deep)}
+  .count-box .l{text-transform:uppercase;letter-spacing:.18em;font-size:.62rem;color:var(--ink-soft);margin-top:.35rem}
+  .count-msg{margin-top:1.4rem;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.3rem;color:var(--rose-deep)}
+  @media(max-width:420px){.count-box{min-width:64px;padding:.9rem .4rem}.count-box .n{font-size:2.1rem}}
+
+  /* ===== BIRTH STATS ===== */
+  .hello-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem;align-items:center;margin-top:2rem;text-align:left}
+  .hello-photo{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:16px;box-shadow:var(--shadow);background:linear-gradient(160deg,var(--blush-deep),var(--rose))}
+  .stats li{list-style:none;padding:.5rem 0;border-bottom:1px dashed var(--blush-deep);display:flex;justify-content:space-between;gap:1rem}
+  .stats li:last-child{border-bottom:none}
+  .stats .k{text-transform:uppercase;letter-spacing:.15em;font-size:.72rem;color:var(--ink-soft)}
+  .stats .v{font-family:'Cormorant Garamond',serif;font-size:1.35rem;color:var(--rose-deep)}
+  @media(max-width:560px){.hello-grid{grid-template-columns:1fr}}
+
+  /* ===== MAP ===== */
+  .map-frame{margin-top:1.6rem;border-radius:18px;overflow:hidden;box-shadow:var(--shadow);border:1px solid #f2e4e6;position:relative}
+  .map-frame iframe{width:100%;height:300px;border:0;display:block;filter:grayscale(.15) sepia(.12) saturate(1.05)}
+
+  /* ===== SCHEDULE ===== */
+  .timeline{display:grid;gap:1.2rem;margin-top:2rem;text-align:left}
+  .tl-item{display:grid;grid-template-columns:86px 1fr;gap:1.1rem;align-items:baseline;padding-bottom:1.2rem;border-bottom:1px dashed var(--blush-deep)}
+  .tl-item:last-child{border-bottom:none}
+  .tl-time{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--gold);text-align:right}
+  .tl-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--rose-deep)}
+  .tl-desc{font-size:.95rem;color:var(--ink-soft)}
+
+  /* ===== GODPARENTS ===== */
+  .gp-grid{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin-top:2rem}
+  .gp-card{background:var(--white);border-radius:12px;padding:.85rem;box-shadow:0 10px 26px -18px rgba(120,80,85,.5);border:1px solid #f2e4e6;font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--rose-deep)}
+  @media(max-width:560px){.gp-grid{grid-template-columns:1fr 1fr;gap:.6rem}.gp-card{font-size:1rem;padding:.7rem}}
+
+  /* ===== INFO ===== */
+  .info-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem;text-align:left}
+  .info-card{background:var(--white);border-radius:16px;padding:1.5rem;box-shadow:var(--shadow);border:1px solid #f2e4e6}
+  .info-card .ico{font-size:1.5rem}
+  .info-card h3{color:var(--rose-deep);font-size:1.35rem;margin:.3rem 0}
+  .info-card p{font-size:.95rem;color:var(--ink-soft)}
+  @media(max-width:560px){.info-grid{grid-template-columns:1fr}}
+
+  /* ===== VERSE / GIFTS ===== */
+  .verse{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.4rem,4vw,2rem);color:var(--rose-deep);line-height:1.5}
+  .verse-ref{display:block;margin-top:1rem;letter-spacing:.25em;text-transform:uppercase;font-size:.75rem;color:var(--gold);font-style:normal;font-family:'Josefin Sans',sans-serif}
+
+  /* ===== RSVP FORM ===== */
+  .form{text-align:left;margin-top:2rem}
+  .form label{display:block;font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-soft);margin:1.1rem 0 .4rem}
+  .form select,.form input{width:100%;padding:.85rem 1rem;border-radius:12px;border:1px solid var(--blush-deep);background:var(--cream);font-family:'Josefin Sans',sans-serif;font-size:1rem;color:var(--ink)}
+  .form select:focus,.form input:focus{outline:none;border-color:var(--rose)}
+  .radio-row{display:flex;gap:.8rem;margin-top:.5rem}
+  .radio-pill{flex:1}
+  .radio-pill input{display:none}
+  .radio-pill span{display:block;text-align:center;padding:.8rem;border-radius:12px;border:1px solid var(--blush-deep);cursor:pointer;transition:all .25s;letter-spacing:.1em;text-transform:uppercase;font-size:.8rem}
+  .radio-pill input:checked+span{background:var(--rose);color:#fff;border-color:var(--rose)}
+  #yesExtra,#companionOtherWrap{display:none}
+  .chk-group{margin-top:.4rem;border:1px solid var(--blush-deep);border-radius:12px;padding:.4rem .6rem;max-height:190px;overflow:auto;background:var(--cream)}
+  .chk-sub{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:.5rem .2rem .2rem}
+  .chk{display:flex;align-items:center;gap:.6rem;padding:.4rem .3rem;border-radius:8px}
+  .chk input{width:auto;margin:0}
+  .chk label{margin:0;text-transform:none;letter-spacing:0;font-size:.98rem;color:var(--ink);cursor:pointer}
+  .fam-hint{background:var(--blush);border:1px dashed var(--rose);border-radius:12px;padding:.7rem .9rem;margin-top:.5rem;font-size:.9rem;color:var(--rose-deep)}
+  .form .btn{width:100%;margin-top:1.6rem}
+  .form-status{text-align:center;margin-top:1rem;font-size:.9rem;color:var(--rose-deep);min-height:1.2em}
+
+  .rsvp-thanks{display:none;text-align:center;border-radius:20px;padding:1.6rem}
+  .rsvp-thanks.yes{background:var(--green-bg);border:1px solid var(--green)}
+  .rsvp-thanks.no{background:var(--red-bg);border:1px solid var(--red)}
+  .rsvp-thanks h3{font-family:'Pinyon Script',cursive;font-size:3rem}
+  .rsvp-thanks.yes h3{color:var(--green)}
+  .rsvp-thanks.no h3{color:var(--red)}
+  .cal-btns{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;margin-top:1.2rem}
+
+  /* ===== LIVE GUEST LIST ===== */
+  .guest-list{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-top:1.8rem;text-align:left}
+  .guest{display:flex;align-items:center;gap:.6rem;background:var(--white);border-radius:10px;padding:.6rem .8rem;box-shadow:0 8px 20px -16px rgba(120,80,85,.5);border:1px solid #f2e4e6;font-size:.95rem}
+  .dot{width:10px;height:10px;border-radius:50%;background:#dcd0d2;flex:none}
+  .guest.yes{background:var(--green-bg);border-color:#cfe6d2}.guest.yes .dot{background:var(--green)}
+  .guest.no{background:var(--red-bg);border-color:#f0d6d7}.guest.no .dot{background:var(--red)}
+  .legend{display:flex;gap:1.2rem;justify-content:center;margin-top:1.4rem;font-size:.8rem;color:var(--ink-soft)}
+  .legend span{display:inline-flex;align-items:center;gap:.4rem}
+  @media(max-width:560px){.guest-list{grid-template-columns:1fr}}
+
+  footer{background:var(--rose-deep);color:#fff;text-align:center;padding:3.2rem 1.5rem}
+  footer .script{font-size:2.6rem;color:#fff}
+  footer p{opacity:.9;font-size:.95rem}
+  footer .names{margin-top:.4rem;letter-spacing:.15em;text-transform:uppercase;font-size:.78rem;opacity:.85}
+  .noimg{display:none}
+</style>
+</head>
+<body>
+
+<!-- ENVELOPE INTRO -->
+<div id="envelope">
+  <p class="env-eyebrow">You are invited</p>
+  <div class="env" id="env">
+    <div class="env-body"></div>
+    <div class="env-card">
+      <div class="script">Emory Juliete</div>
+      <small>Dedication Day</small>
+    </div>
+    <div class="env-pocket"></div>
+    <div class="env-flap"></div>
+    <div class="env-seal serif">E</div>
+  </div>
+  <p class="env-hint" id="envHint">Tap to open</p>
+</div>
+
+<!-- MUSIC -->
+<div id="ytHolder"></div>
+<button class="music-btn" id="musicBtn" hidden>
+  <span class="bars"><i></i><i></i><i></i></span><span id="musicLabel">Music on</span>
+</button>
+
+<!-- HERO -->
+<header class="hero">
+  <img class="hero-photo" src="photos/hero.jpg" alt="Baby Emory" onerror="this.classList.add('noimg')" />
+  <p class="eyebrow">Join us to celebrate the dedication</p>
+  <h2 class="lead">of our daughter</h2>
+  <div class="name script">Emory Juliete</div>
+  <div class="surname">Solberg</div>
+  <div class="date-badge">
+    <span class="day">Sunday</span><span class="sep"></span>
+    <span class="num">09</span><span class="sep"></span>
+    <span class="mo">August<br />2026</span>
+  </div>
+  <p class="time">11:00 in the morning to 6:00 in the evening</p>
+  <p class="plan-note">Please save this date. It is our planned date, and we will gladly let you know right away should anything change.</p>
+  <div class="scroll-cue">Scroll<span>&#8595;</span></div>
+</header>
+
+<!-- COUNTDOWN -->
+<section class="band-cream">
+  <div class="wrap reveal">
+    <p class="eyebrow">Counting down to the big day</p>
+    <div class="divider"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c1 3 3 4 6 4-3 1-5 3-6 6-1-3-3-5-6-6 3 0 5-1 6-4z"/></svg></div>
+    <h2 class="section-title">See You Soon</h2>
+    <div class="count-grid" id="countGrid">
+      <div class="count-box"><div class="n" id="cd-d">00</div><div class="l">Days</div></div>
+      <div class="count-box"><div class="n" id="cd-h">00</div><div class="l">Hours</div></div>
+      <div class="count-box"><div class="n" id="cd-m">00</div><div class="l">Minutes</div></div>
+      <div class="count-box"><div class="n" id="cd-s">00</div><div class="l">Seconds</div></div>
+    </div>
+    <p class="count-msg" id="countMsg">until we celebrate Emory</p>
+  </div>
+</section>
+
+<!-- VENUE + MAP -->
+<section class="band-white">
+  <div class="wrap reveal">
+    <p class="eyebrow">You are warmly invited</p>
+    <div class="divider"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c1 3 3 4 6 4-3 1-5 3-6 6-1-3-3-5-6-6 3 0 5-1 6-4z"/></svg></div>
+    <h2 class="section-title">The Celebration</h2>
+    <div class="card" style="margin-top:2rem">
+      <p style="font-size:1.2rem"><strong style="color:var(--rose-deep)">Villa Marca Resort,<br />Hotel and Events Place</strong></p>
+      <p style="margin-top:.6rem;color:var(--ink-soft)">Sunday, August 9, 2026 &bull; 11:00 AM to 6:00 PM</p>
+      <div class="map-frame">
+        <iframe loading="lazy" src="https://maps.google.com/maps?q=14.2345765,120.9800657&z=15&output=embed" title="Villa Marca Resort map"></iframe>
+      </div>
+      <a class="btn" id="dirBtn" href="#" target="_blank" rel="noopener">Get Directions</a>
+      <p style="margin-top:.7rem;font-size:.82rem;color:var(--ink-soft)">Tapping opens your maps app with directions from where you are.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SCHEDULE -->
+<section class="band-blush">
+  <div class="wrap reveal">
+    <p class="eyebrow">How the day unfolds</p>
+    <div class="divider"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c1 3 3 4 6 4-3 1-5 3-6 6-1-3-3-5-6-6 3 0 5-1 6-4z"/></svg></div>
+    <h2 class="section-title">The Day</h2>
+    <div class="card" style="margin-top:2rem">
+      <div class="timeline">
+        <div class="tl-item"><div class="tl-time">11:00<br /><span style="font-size:.78rem">AM</span></div>
+          <div><div class="tl-title">Dedication Ceremony</div><div class="tl-desc">We gather to dedicate baby Emory and give thanks. Please arrive a little early so we can begin together.</div></div></div>
+        <div class="tl-item"><div class="tl-time">12:30<br /><span style="font-size:.78rem">PM</span></div>
+          <div><div class="tl-title">Lunch and Fellowship</div><div class="tl-desc">A warm meal is provided for everyone. Come hungry and stay a while.</div></div></div>
+        <div class="tl-item"><div class="tl-time">2:00<br /><span style="font-size:.78rem">PM</span></div>
+          <div><div class="tl-title">Swimming and Celebration</div><div class="tl-desc">The resort pool is ours to enjoy. Relax, swim, and celebrate with the family.</div></div></div>
+        <div class="tl-item"><div class="tl-time">6:00<br /><span style="font-size:.78rem">PM</span></div>
+          <div><div class="tl-title">Until Evening</div><div class="tl-desc">We have the resort until 6:00 PM, so there is plenty of time to enjoy the day.</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GODPARENTS -->
+<section class="band-white">
+  <div class="wrap reveal">
+    <p class="eyebrow">With gratitude to</p>
+    <div class="divider"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c1 3 3 4 6 4-3 1-5 3-6 6-1-3-3-5-6-6 3 0 5-1 6-4z"/></svg></div>
+    <h2 class="section-title">Emory's Godparents</h2>
+    <p class="section-sub">A child is blessed not only by parents, but by the souls who help her grow. Emory is so lucky to have these special guides, to protect, inspire, and love her forever.</p>
+    <div class="gp-grid" id="godparents"></div>
+  </div>
+</section>
+
+<!-- GOOD TO KNOW -->
+<section class="band-blush">
+  <div class="wrap reveal">
+    <p class="eyebrow">A little heads up</p>
+    <div class="divider"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c1 3 3 4 6 4-3 1-5 3-6 6-1-3-3-5-6-6 3 0 5-1 6-4z"/></svg></div>
+    <h2 class="section-title">Good to Know</h2>
+    <div class="info-grid">
+      <div class="info-card"><div class="ico">&#128706;</div><h3>Bring Your Swim Things</h3><p>It is a resort, so after the ceremony you are welcome to swim. Pack your swimsuit, towel, a change of clothes, sunscreen, and slippers.</p></div>
+      <div class="info-card"><div class="ico">&#127869;</div><h3>Food is Covered</h3><p>No need to bring a dish. Lunch, drinks, and snacks are all provided. Just come with your appetite and a happy heart.</p></div>
+      <div class="info-card"><div class="ico">&#128087;</div><h3>Dress Comfy</h3><p>Smart, comfortable attire for the ceremony, plus swimwear underneath or in your bag for the pool afterward.</p></div>
+      <div class="info-card"><div class="ico">&#128151;</div><h3>Come and Celebrate</h3><p>Your presence is the greatest gift of all. We simply cannot wait to celebrate this precious day with the people we love.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- GIFTS -->
+<section class="band-white">
+  <div class="wrap reveal">
+    <p class="eyebrow">With love</p>
+    <div class="divider"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c1 3 3 4 6 4-3 1-5 3-6 6-1-3-3-5-6-6 3 0 5-1 6-4z"/></svg></div>
+    <h2 class="section-title">Gifts and Blessings</h2>
+    <div class="card" style="margin-top:2rem">
+      <p style="font-size:1.1rem;color:var(--ink-soft)">Your presence and prayers over Emory are truly all we could ask for. Should you wish to bless her further, a gift for her future would be lovingly received. There is no need for anything at all, only your company on her special day.</p>
+    </div>
+  </div>
+</section>
+
+<!-- VERSE -->
+<section class="band-blush">
+  <div class="wrap reveal">
+    <div class="divider"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c1 3 3 4 6 4-3 1-5 3-6 6-1-3-3-5-6-6 3 0 5-1 6-4z"/></svg></div>
+    <p class="verse">"Every good and perfect gift is from above, coming down from the Father of the heavenly lights, who does not change like shifting shadows."
+      <span class="verse-ref">James 1:17</span></p>
+  </div>
+</section>
+
+<!-- RSVP -->
+<section class="band-white" id="rsvp">
+  <div class="wrap reveal">
+    <p class="eyebrow">Kindly respond by August 2, 2026</p>
+    <div class="divider"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c1 3 3 4 6 4-3 1-5 3-6 6-1-3-3-5-6-6 3 0 5-1 6-4z"/></svg></div>
+    <h2 class="section-title">RSVP</h2>
+    <p class="section-sub">Please find your name below and let us know if you will be joining us.</p>
+
+    <div class="card" style="margin-top:2rem">
+      <form class="form" id="rsvpForm">
+        <label for="guestName">Your Name</label>
+        <select id="guestName" name="guestName" required>
+          <option value="" disabled selected>Select your name...</option>
+        </select>
+
+        <label>Will you be joining us?</label>
+        <div class="radio-row">
+          <label class="radio-pill"><input type="radio" name="attending" value="Yes" required /><span>Joyfully Yes</span></label>
+          <label class="radio-pill"><input type="radio" name="attending" value="No" /><span>Regretfully No</span></label>
+        </div>
+
+        <div id="yesExtra">
+          <div class="fam-hint" id="famHint" hidden></div>
+
+          <label>Who is coming with you? <span style="text-transform:none;letter-spacing:0;color:var(--gold)">(optional)</span></label>
+          <div class="chk-group" id="companionGroup"></div>
+
+          <div class="chk" style="margin-top:.6rem">
+            <input type="checkbox" id="bringOther" />
+            <label for="bringOther">I am bringing someone who is not on the list</label>
+          </div>
+          <div id="companionOtherWrap">
+            <input type="text" id="companionOther" placeholder="Type their name(s), separated by commas" />
+          </div>
+
+          <label for="guestCount" style="margin-top:1rem">Total attending (including you)</label>
+          <input type="number" id="guestCount" name="guestCount" min="1" max="30" value="1" />
+        </div>
+
+        <label for="guestEmail">Email <span style="text-transform:none;letter-spacing:0;color:var(--gold)">(so we can send you a reminder)</span></label>
+        <input type="email" id="guestEmail" name="guestEmail" placeholder="you@example.com" />
+
+        <label for="guestNote">A note for the family <span style="text-transform:none;letter-spacing:0;color:var(--gold)">(optional)</span></label>
+        <input type="text" id="guestNote" name="guestNote" placeholder="We are so excited!" />
+
+        <button type="submit" class="btn" id="submitBtn">Send My RSVP</button>
+        <div class="form-status" id="formStatus"></div>
+      </form>
+
+      <div class="rsvp-thanks" id="rsvpThanks">
+        <h3 class="script">Thank you!</h3>
+        <p id="thanksMsg" style="color:var(--ink-soft)"></p>
+        <div class="cal-btns" id="calBtns">
+          <a class="btn" id="gcalBtn" href="#" target="_blank" rel="noopener">Add to Google Calendar</a>
+          <a class="btn outline" id="icsBtn" href="#" download="Emory-Dedication.ics">Add to Apple or Other</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIVE GUEST LIST -->
+<section class="band-blush">
+  <div class="wrap reveal">
+    <p class="eyebrow">Our loved ones</p>
+    <div class="divider"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c1 3 3 4 6 4-3 1-5 3-6 6-1-3-3-5-6-6 3 0 5-1 6-4z"/></svg></div>
+    <h2 class="section-title">Who's Coming</h2>
+    <p class="section-sub">Updates in real time as everyone responds.</p>
+    <div class="legend">
+      <span><i class="dot" style="background:var(--green)"></i> Coming</span>
+      <span><i class="dot" style="background:var(--red)"></i> Can't make it</span>
+      <span><i class="dot" style="background:#dcd0d2"></i> Awaiting reply</span>
+    </div>
+    <div class="guest-list" id="guestList"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="divider" style="color:#f6d7db"><svg viewBox="0 0 24 24" fill="currentColor" style="width:20px;height:20px"><path d="M12 2c1 3 3 4 6 4-3 1-5 3-6 6-1-3-3-5-6-6 3 0 5-1 6-4z"/></svg></div>
+  <p>With love and gratitude, thank you for celebrating this precious moment with us.</p>
+  <div class="script">Emory Juliete</div>
+  <p class="names">Ciara Jasmine and Erik Solberg</p>
+</footer>
+
+<script>
+/* =====================================================================
+   EDIT YOUR DETAILS HERE
+   ===================================================================== */
+const CONFIG = {
+  // Paste your Google Apps Script Web App URL (see README).
+  rsvpEndpoint: "https://script.google.com/macros/s/AKfycbxs815hZXbzU4eRZQVUJU6Jc5r7sl0YHxiLlq4feYyKtv4h0t8SSR_D8voSFLxzGDPW7w/exec",
+
+  // Music: your song's YouTube video id (from the link after v=)
+  youtubeId: "Qyb8NmtSxTk",
+
+  // Venue
+  venue: { lat: 14.2345765, lng: 120.9800657, name: "Villa Marca Resort, Hotel and Events Place" },
+
+  // Guest list (RSVP dropdown). Surname is taken from the last word,
+  // so family members with the same surname get grouped automatically.
+  attendees: [
+    "Wayne Diaz Ruiz","May Diaz Ruiz",
+    "Baby Muyco","Jing Muyco","Vhien Muyco","Jhellie Muyco","Jezreel Muyco","Erik Muyco",
+    "Alyana Capiroso","Jovy Spigner",
+    "Jackie Montaño","John Montaño","Faith Montaño",
+    "Joel Malabja","Emmanuel Tindan","Adam Galletes",
+    "Pastor Ramil Marquina","Pastora Luz Marquina",
+    "Jolans Cruzado","Rose Ann Cruzado","Jocelyn Cruzado",
+    "Andrea Castañeda","Sally Castañeda",
+    "Andrea Zantua","Dorothy Alpino","Elisha Sofia","Victoria Bernas"
+  ],
+
+  // The family hosting the day. Shown at the top of "Who's Coming", always
+  // marked as coming, and NOT in the RSVP dropdown (no need to RSVP to yourselves).
+  hosts: ["Ciara Jasmine Solberg", "Erik Solberg", "Jing Montaño Galletes"],
+
+  // Godparents to display (not all will attend)
+  godparents: [
+    "Wayne Ruiz","Adam Galletes","Emmanuel Tindan","Jizle Bilarmino","Jelly Joy Muyco",
+    "Jezreel Muyco","Andrea Castaneda","Alyana Maica Capiroso","Andrea Zantua","Dorothy Alpino",
+    "Elisha Santana","Victoria Bernas","Kayla Credo","Faith Montano","Jamilla Malabja",
+    "Jolans Cruzado","Rose Anne Cruzado"
+  ],
+
+  event: {
+    title: "Emory Juliete's Dedication Day",
+    location: "Villa Marca Resort, Hotel and Events Place",
+    details: "Join us to celebrate the dedication of Emory Juliete Solberg. Ceremony at 11 AM, lunch, then swimming at the resort until 6 PM. Bring your swim things!",
+    start: "2026-08-09T11:00:00",
+    end:   "2026-08-09T18:00:00"
+  }
+};
+/* ===== end of things to edit ===== */
+
+const $ = (id) => document.getElementById(id);
+const surname = (n) => n.trim().split(/\s+/).pop();
+
+// Sort the guest list alphabetically (handles ñ correctly).
+CONFIG.attendees.sort((a, b) => a.localeCompare(b, undefined, { sensitivity: "base" }));
+
+// Everyone who can RSVP: the guests plus the hosting family, sorted A to Z.
+// (The hosts want to RSVP and experience it too, so they appear in the dropdown.)
+const invited = [...(CONFIG.hosts || []), ...CONFIG.attendees]
+  .sort((a, b) => a.localeCompare(b, undefined, { sensitivity: "base" }));
+
+/* ---------- Directions link ---------- */
+$("dirBtn").href = "https://www.google.com/maps/dir/?api=1&destination=" + CONFIG.venue.lat + "," + CONFIG.venue.lng;
+
+/* ---------- Godparents ---------- */
+CONFIG.godparents.forEach(n => { const d=document.createElement("div"); d.className="gp-card"; d.textContent=n; $("godparents").appendChild(d); });
+
+/* ---------- Dropdown ---------- */
+const nameSelect = $("guestName");
+invited.forEach(n => { const o=document.createElement("option"); o.value=n; o.textContent=n; nameSelect.appendChild(o); });
+
+/* ---------- Live guest list ---------- */
+const guestEls = {};
+function makeGuestRow(name, extra){
+  const row=document.createElement("div"); row.className="guest";
+  row.innerHTML='<span class="dot"></span><span>'+name+(extra?' <em style="font-style:italic;color:var(--ink-soft);font-size:.8em">'+extra+'</em>':'')+'</span>';
+  $("guestList").appendChild(row); guestEls[name]=row; return row;
+}
+// Hosting family pinned first, tagged "family" (they RSVP like everyone else).
+(CONFIG.hosts || []).forEach(n => makeGuestRow(n, "family"));
+CONFIG.attendees.forEach(n => makeGuestRow(n));
+// Ensure a row exists (creates one for guests who are not on the original list)
+function ensureGuestRow(name){ return guestEls[name] || makeGuestRow(name, "guest"); }
+function setStatus(name, attending){
+  if(!name) return;
+  const el = ensureGuestRow(name); el.classList.remove("yes","no");
+  if(attending==="Yes") el.classList.add("yes"); else if(attending==="No") el.classList.add("no");
+}
+function applyStatuses(list){ list.forEach(s => setStatus(s.name, s.attending)); }
+// JSONP load of statuses (avoids CORS). Refreshes every 30s so the list stays live.
+window.__statusCb = (data)=>{ if(data && data.statuses) applyStatuses(data.statuses); };
+function loadStatuses(){
+  if(!CONFIG.rsvpEndpoint || CONFIG.rsvpEndpoint.includes("PASTE_YOUR")) return;
+  const s=document.createElement("script");
+  s.src=CONFIG.rsvpEndpoint+"?callback=__statusCb&t="+Date.now();
+  s.onload=()=>s.remove(); s.onerror=()=>s.remove();
+  document.body.appendChild(s);
+}
+loadStatuses();
+setInterval(loadStatuses, 30000);
+
+/* ---------- Companion / family logic ---------- */
+const yesExtra=$("yesExtra"), companionGroup=$("companionGroup"), famHint=$("famHint");
+function buildCompanions(){
+  const me=nameSelect.value; companionGroup.innerHTML="";
+  if(!me) return;
+  const mySur=surname(me);
+  const family=invited.filter(n=>n!==me && surname(n)===mySur);
+  const others=invited.filter(n=>n!==me && surname(n)!==mySur);
+
+  if(family.length){
+    famHint.hidden=false;
+    famHint.textContent="We noticed the "+mySur+" family on our list. Are any of them coming with you? Just tick their names below.";
+    const sub=document.createElement("div"); sub.className="chk-sub"; sub.textContent="Your family ("+mySur+")"; companionGroup.appendChild(sub);
+    family.forEach(n=>companionGroup.appendChild(makeChk(n)));
+  } else { famHint.hidden=true; }
+
+  const sub2=document.createElement("div"); sub2.className="chk-sub"; sub2.textContent="Other guests"; companionGroup.appendChild(sub2);
+  others.forEach(n=>companionGroup.appendChild(makeChk(n)));
+}
+function makeChk(name){
+  const w=document.createElement("div"); w.className="chk";
+  const id="c_"+name.replace(/\W/g,"");
+  w.innerHTML='<input type="checkbox" class="companion" value="'+name+'" id="'+id+'"><label for="'+id+'">'+name+'</label>';
+  w.querySelector("input").addEventListener("change",recount);
+  return w;
+}
+function recount(){
+  const checked=document.querySelectorAll(".companion:checked").length;
+  const extra=$("companionOther").value.split(",").map(s=>s.trim()).filter(Boolean).length;
+  $("guestCount").value = 1 + checked + extra;
+}
+nameSelect.addEventListener("change",()=>{ buildCompanions(); recount(); });
+$("bringOther").addEventListener("change",e=>{ $("companionOtherWrap").style.display=e.target.checked?"block":"none"; if(!e.target.checked){$("companionOther").value="";recount();} });
+$("companionOther").addEventListener("input",recount);
+
+document.querySelectorAll('input[name="attending"]').forEach(r=>{
+  r.addEventListener("change",e=>{ yesExtra.style.display=(e.target.value==="Yes")?"block":"none"; });
+});
+
+/* ---------- Calendar links ---------- */
+function fmtCal(dt){ return dt.replace(/[-:]/g,"").replace(/\.\d+/,""); }
+function buildGoogleCal(ev){
+  const p=new URLSearchParams({action:"TEMPLATE",text:ev.title,dates:fmtCal(ev.start)+"/"+fmtCal(ev.end),details:ev.details,location:ev.location});
+  return "https://calendar.google.com/calendar/render?"+p.toString();
+}
+function buildICS(ev){
+  const ics=["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//Emory Dedication//EN","BEGIN:VEVENT",
+    "UID:emory-dedication-2026@monsolstudio.com","DTSTART:"+fmtCal(ev.start),"DTEND:"+fmtCal(ev.end),
+    "SUMMARY:"+ev.title,"LOCATION:"+ev.location,"DESCRIPTION:"+ev.details.replace(/,/g,"\\,"),
+    "BEGIN:VALARM","TRIGGER:-P2D","ACTION:DISPLAY","DESCRIPTION:Emory's Dedication in 2 days","END:VALARM",
+    "END:VEVENT","END:VCALENDAR"].join("\r\n");
+  return "data:text/calendar;charset=utf-8,"+encodeURIComponent(ics);
+}
+$("gcalBtn").href=buildGoogleCal(CONFIG.event);
+$("icsBtn").href=buildICS(CONFIG.event);
+
+/* ---------- Submit ---------- */
+const form=$("rsvpForm"), statusEl=$("formStatus");
+form.addEventListener("submit",async(e)=>{
+  e.preventDefault();
+  const attending=form.attending.value;
+  const companions=[...document.querySelectorAll(".companion:checked")].map(c=>c.value);
+  const otherNames=$("companionOther").value.trim();
+  if(otherNames) companions.push(...otherNames.split(",").map(s=>s.trim()).filter(Boolean));
+  const data={
+    guestName:form.guestName.value, attending:attending,
+    guestCount:attending==="Yes"?$("guestCount").value:"0",
+    companions:companions.join(", "),
+    guestEmail:form.guestEmail.value, guestNote:form.guestNote.value
+  };
+  const btn=$("submitBtn"); btn.disabled=true; statusEl.textContent="Sending your RSVP...";
+  try{
+    if(CONFIG.rsvpEndpoint && !CONFIG.rsvpEndpoint.includes("PASTE_YOUR")){
+      await fetch(CONFIG.rsvpEndpoint,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(data)});
+    }
+    // Optimistic color update on the live list: the guest, plus everyone
+    // they said is coming with them (adds new cards for names not on the list).
+    setStatus(data.guestName, attending);
+    if(attending==="Yes") companions.forEach(n => setStatus(n, "Yes"));
+    form.style.display="none";
+    const thanks=$("rsvpThanks"); thanks.style.display="block";
+    thanks.classList.add(attending==="Yes"?"yes":"no");
+    if(attending==="Yes"){
+      $("thanksMsg").textContent="We are so happy you will be joining us! Add the day to your calendar so you do not miss it, and you will get a reminder too.";
+      $("calBtns").style.display="flex";
+    } else {
+      $("thanksMsg").textContent="Thank you for letting us know. You will be missed, and we hope to celebrate with you another time.";
+      $("calBtns").style.display="none";
+    }
+    thanks.scrollIntoView({behavior:"smooth",block:"center"});
+  }catch(err){ statusEl.textContent="Something went wrong. Please try again, or message the family directly."; btn.disabled=false; }
+});
+
+/* ---------- Countdown ---------- */
+(function(){
+  const target=new Date(CONFIG.event.start).getTime();
+  const grid=$("countGrid"), msg=$("countMsg");
+  const pad=n=>String(n).padStart(2,"0");
+  function tick(){
+    const diff=target-Date.now();
+    if(diff<=0){
+      grid.style.display="none";
+      msg.textContent="Today is the day. Welcome, and thank you for celebrating with us!";
+      clearInterval(timer); return;
+    }
+    const d=Math.floor(diff/86400000);
+    const h=Math.floor(diff%86400000/3600000);
+    const m=Math.floor(diff%3600000/60000);
+    const s=Math.floor(diff%60000/1000);
+    $("cd-d").textContent=pad(d); $("cd-h").textContent=pad(h);
+    $("cd-m").textContent=pad(m); $("cd-s").textContent=pad(s);
+  }
+  tick(); const timer=setInterval(tick,1000);
+})();
+
+/* ---------- Reveal on scroll ---------- */
+const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting)en.target.classList.add("in")}),{threshold:.12});
+document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+
+/* ---------- Music (YouTube IFrame API) ---------- */
+let ytPlayer=null, ytReady=false;
+window.onYouTubeIframeAPIReady=function(){
+  ytPlayer=new YT.Player("ytHolder",{videoId:CONFIG.youtubeId,
+    playerVars:{autoplay:0,controls:0,loop:1,playlist:CONFIG.youtubeId},
+    events:{onReady:()=>{ytReady=true;}}});
+};
+(function loadYT(){ const t=document.createElement("script"); t.src="https://www.youtube.com/iframe_api"; document.head.appendChild(t); })();
+
+const musicBtn=$("musicBtn"), musicLabel=$("musicLabel");
+function playMusic(){ if(ytReady&&ytPlayer){ ytPlayer.unMute(); ytPlayer.playVideo(); musicBtn.classList.add("playing"); musicLabel.textContent="Music on"; } }
+function toggleMusic(){
+  if(!ytReady||!ytPlayer) return;
+  const st=ytPlayer.getPlayerState();
+  if(st===1){ ytPlayer.pauseVideo(); musicBtn.classList.remove("playing"); musicLabel.textContent="Music off"; }
+  else { ytPlayer.playVideo(); musicBtn.classList.add("playing"); musicLabel.textContent="Music on"; }
+}
+musicBtn.addEventListener("click",toggleMusic);
+
+/* ---------- Envelope ---------- */
+const envelope=$("envelope"), env=$("env");
+function openEnvelope(){
+  env.classList.add("open");
+  $("envHint").textContent="Welcome";
+  musicBtn.hidden=false;
+  setTimeout(()=>{ envelope.classList.add("gone"); document.body.style.overflow=""; }, 1400);
+  setTimeout(()=>{ playMusic(); }, 700);
+}
+document.body.style.overflow="hidden";
+envelope.addEventListener("click",openEnvelope,{once:true});
+</script>
+</body>
+</html>

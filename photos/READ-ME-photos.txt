@@ -1,0 +1,22 @@
+PUT EMORY'S PHOTOS IN THIS FOLDER
+=================================
+
+The website looks for two photos by these exact file names. Save your
+pictures here and rename them exactly like this (all lowercase):
+
+1) hero.jpg    -> The big round photo at the very top of the site.
+                  Best pick: the close-up of Emory with the peach flower
+                  headband looking at the camera, or the clean white-background
+                  studio photo. Any nice square-ish photo works.
+
+2) birth.jpg   -> The photo next to her birth details ("I'm Emory").
+                  Best pick: the sleeping newborn photo with the wooden
+                  "Emory Solberg" name sign.
+
+Notes:
+- JPG or PNG both work, but keep the name ending in .jpg
+  (or change the name in index.html to match your file).
+- If a photo is missing, the site still looks great, it just shows a soft
+  pink circle instead. So you can add them anytime.
+- Want more photos in a little gallery? Tell Claude and it can add a
+  gallery section using the rest of your pictures.
