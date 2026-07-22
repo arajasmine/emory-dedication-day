@@ -98,6 +98,16 @@
   .music-btn.playing .bars i:nth-child(3){animation-delay:.4s}
   @keyframes eq{0%,100%{height:4px}50%{height:12px}}
 
+  /* Floating RSVP button */
+  .rsvp-fab{position:fixed;bottom:1.1rem;left:50%;transform:translateX(-50%) translateY(160%);z-index:55;
+    background:var(--rose);color:#fff;border:none;border-radius:999px;padding:.9rem 2.1rem;cursor:pointer;
+    font-family:'Josefin Sans',sans-serif;letter-spacing:.2em;text-transform:uppercase;font-size:.8rem;
+    box-shadow:0 14px 32px -8px rgba(150,90,95,.65);opacity:0;transition:opacity .4s ease, transform .4s ease}
+  .rsvp-fab.show{opacity:1;transform:translateX(-50%) translateY(0)}
+  .rsvp-fab:hover{background:var(--rose-deep)}
+  .rsvp-fab .hrt{margin-left:.4rem}
+  @media (prefers-reduced-motion: reduce){ .rsvp-fab{transition:opacity .3s ease} }
+
   /* ===== HERO ===== */
   .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
     background:radial-gradient(1200px 600px at 50% -10%,#fff 0%,var(--blush) 55%),linear-gradient(180deg,var(--cream),var(--blush));
@@ -181,6 +191,10 @@
   .chk input{width:auto;margin:0}
   .chk label{margin:0;text-transform:none;letter-spacing:0;font-size:.98rem;color:var(--ink);cursor:pointer}
   .fam-hint{background:var(--blush);border:1px dashed var(--rose);border-radius:12px;padding:.7rem .9rem;margin-top:.5rem;font-size:.9rem;color:var(--rose-deep)}
+  .rsvp-heads-up{background:var(--blush);border:1px solid var(--blush-deep);border-left:4px solid var(--rose);border-radius:14px;padding:1.05rem 1.3rem;margin:1.5rem auto 0;max-width:560px;text-align:left;box-shadow:var(--shadow)}
+  .rsvp-heads-up .lbl{display:block;font-size:.66rem;text-transform:uppercase;letter-spacing:.18em;color:var(--gold);margin-bottom:.35rem}
+  .rsvp-heads-up p{margin:0;color:var(--ink);font-size:.98rem;line-height:1.55}
+  .rsvp-heads-up strong{color:var(--rose-deep)}
   .form .btn{width:100%;margin-top:1.6rem}
   .form-status{text-align:center;margin-top:1rem;font-size:.9rem;color:var(--rose-deep);min-height:1.2em}
 
@@ -232,6 +246,7 @@
 <button class="music-btn" id="musicBtn" hidden>
   <span class="bars"><i></i><i></i><i></i></span><span id="musicLabel">Music on</span>
 </button>
+<button class="rsvp-fab" id="rsvpFab" aria-label="Jump to RSVP">RSVP<span class="hrt">&#10084;</span></button>
 
 <!-- HERO -->
 <header class="hero">
@@ -246,7 +261,9 @@
     <span class="mo">August<br />2026</span>
   </div>
   <p class="time">11:00 in the morning to 6:00 in the evening</p>
+  <p class="plan-note">Please take a moment to read through our invitation, and kindly confirm your attendance at the very bottom.</p>
   <p class="plan-note">Please save this date. It is our planned date, and we will gladly let you know right away should anything change.</p>
+  <a href="#rsvp" class="btn" style="margin-top:1.6rem">RSVP Now</a>
   <div class="scroll-cue">Scroll<span>&#8595;</span></div>
 </header>
 
@@ -359,6 +376,11 @@
     <div class="divider"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c1 3 3 4 6 4-3 1-5 3-6 6-1-3-3-5-6-6 3 0 5-1 6-4z"/></svg></div>
     <h2 class="section-title">RSVP</h2>
     <p class="section-sub">Please find your name below and let us know if you will be joining us.</p>
+
+    <div class="rsvp-heads-up">
+      <span class="lbl">Please note</span>
+      <p><strong>Bringing a guest with you?</strong> Kindly add them in your RSVP below, whether they are on our list or not, so we can confirm their spot and count them in for the food.</p>
+    </div>
 
     <div class="card" style="margin-top:2rem">
       <form class="form" id="rsvpForm">
@@ -650,6 +672,23 @@ form.addEventListener("submit",async(e)=>{
     $("cd-m").textContent=pad(m); $("cd-s").textContent=pad(s);
   }
   tick(); const timer=setInterval(tick,1000);
+})();
+
+/* ---------- Floating RSVP button ---------- */
+(function(){
+  const fab=$("rsvpFab"), rsvpSection=$("rsvp"), envEl=$("envelope");
+  function envOpen(){ return !envEl || envEl.classList.contains("gone") || envEl.style.display==="none"; }
+  function update(){
+    if(!envOpen()){ fab.classList.remove("show"); return; }
+    const past = window.scrollY > window.innerHeight*0.55;
+    const r = rsvpSection.getBoundingClientRect();
+    const rsvpVisible = r.top < window.innerHeight*0.85 && r.bottom > 120;
+    fab.classList.toggle("show", past && !rsvpVisible);
+  }
+  fab.addEventListener("click", ()=> rsvpSection.scrollIntoView({behavior:"smooth", block:"start"}));
+  window.addEventListener("scroll", update, {passive:true});
+  window.addEventListener("resize", update);
+  setInterval(update, 900); // also reveal once the envelope is opened
 })();
 
 /* ---------- Reveal on scroll ---------- */
